@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.1.0](https://github.com/Hana61/TibetanEDA/releases/tag/v0.1.0) - 2023-12-08
+## [v0.1.0](https://github.com/Hana61/TibetanEDA/releases/tag/v0.1.0) - 2023-12-08
 
 ### Added
 
