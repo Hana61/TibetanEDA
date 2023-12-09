@@ -24,7 +24,7 @@ for parent_folder_path in parent_folder_paths:
         
         # 如果该子文件夹下有txt文件，则合并它们
         if txt_contents:
-            combined_txt_path = os.path.join(subdir, '%s.txt' % subdir.split('/')[-1])
+            combined_txt_path = os.path.join(save_path, '%s.txt' % subdir.split('/')[-1])
             # 写入合并后的内容到新文件
             with io.open(combined_txt_path, 'w', encoding='utf-8') as f:
                 f.write('\n'.join(txt_contents))
