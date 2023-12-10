@@ -4,6 +4,7 @@
 import os
 import io
 
+
 def combine_subdir_text(save_path, parent_folder_paths):
     for parent_folder_path in parent_folder_paths:
         # 遍历父文件夹中的每个子文件夹
@@ -26,6 +27,8 @@ def combine_subdir_text(save_path, parent_folder_paths):
                 with io.open(combined_txt_path, 'w', encoding='utf-8') as f:
                     f.write('\n'.join(txt_contents))
                 print(f'Combined file created at: {combined_txt_path}')
+    
+    pass
 
 
 def combine_dir_text(dir_path, combined_file_name):
@@ -42,6 +45,8 @@ def combine_dir_text(dir_path, combined_file_name):
                 outfile.write(infile.read() + '\n')  # 添加换行符以分隔不同文件的内容
 
     print(f'All .txt files have been combined into {combined_file_path}')            
+
+    pass
 
 
 if __name__ == '__main__':

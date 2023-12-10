@@ -50,3 +50,9 @@
 * 编写回译程序，尝试调用微信翻译API
 * 通过汉语编写小型文本分类任务数据集，并进行测试
 * 编写文档
+
+## [v0.4.1](https://github.com/Hana61/TibetanEDA/releases/tag/v0.4.1) - 2023-12-10
+
+### Added
+
+* 将其他代码的接口整合到main.py中
