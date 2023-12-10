@@ -2,18 +2,21 @@ import Tokenizer
 import dataProcesser
 import W2v
 
+
+parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
+corpusPath = 'corpus/'
+corpusFileName = 'corpus.txt'
+segedCorpusFileName = 'segedCorpus.txt'
+outputVector = 'models/segedCorpus.vector'
+outputModel = 'models/segedCorpus.model'
+
+
 def pre_process():
-    parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
-    corpusPath = 'corpus/'
-    corpusFileName = 'corpus.txt'
     dataProcesser.combine_subdir_text(corpusPath, parentFolderPaths)
     dataProcesser.combine_dir_text(corpusPath, corpusFileName)
 
-    segedCorpusFileName = 'segedCorpus.txt'
-    Tokenizer.tibetanTokenize(corpusPath + corpusFileName, corpusPath, segedCorpusFileName, dialect_name='general')
+    Tokenizer.text_tokenize(corpusPath + corpusFileName, corpusPath, segedCorpusFileName, dialect_name='general')
 
-    outputVector = 'models/segedCorpus.vector'
-    outputModel = 'models/segedCorpus.model'
     W2v.train_word2vec_model(corpusPath + segedCorpusFileName, outputVector, outputModel)
 
     pass
@@ -27,8 +30,11 @@ def main():
     for term in similar_words:
         print(term[0], term[1])
     
+    print(Tokenizer.sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"))
+    
     pass
 
 
 if __name__ == '__name__':
+    # pre_process()
     main()
