@@ -56,3 +56,10 @@
 ### Added
 
 * 将其他代码的接口整合到main.py中
+
+## [v0.4.2](https://github.com/Hana61/TibetanEDA/releases/tag/v0.4.2) - 2023-12-10
+
+### Added
+
+* 实现单句分割
+* 修改部分函数名

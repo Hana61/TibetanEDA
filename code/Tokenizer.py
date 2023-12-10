@@ -29,7 +29,6 @@ def text_tokenize(corpus_path, output_path, output_file_name, dialect_name='gene
     wt = WordTokenizer(config=config)
     segedText = []
     for line in open(corpus_path, encoding=encoding): 
-        # text = "བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"
         segedLine = []
         tokens = get_tokens(wt, line)
         for token in tokens:
@@ -43,8 +42,8 @@ def text_tokenize(corpus_path, output_path, output_file_name, dialect_name='gene
 
 
 if __name__ == "__main__":
-    # outputPath = 'corpus/'
-    # outputFileName = 'segedCorpus.txt'
-    # corpusPath = "corpus/corpus.txt"
-    # text_tokenize(corpusPath, outputPath, outputFileName, dialect_name='general')
-    print(sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"))
+    outputPath = 'corpus/'
+    outputFileName = 'segedCorpus.txt'
+    corpusPath = "corpus/corpus.txt"
+    text_tokenize(corpusPath, outputPath, outputFileName, dialect_name='general')
+    # print(sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"))
