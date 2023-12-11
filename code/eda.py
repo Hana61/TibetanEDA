@@ -4,6 +4,7 @@
 import Tokenizer
 import random
 import W2v
+import Translate
 
 
 def synonym_replacement(model, segedText):
@@ -50,12 +51,24 @@ def random_swap(segedText):
 
     return ' '.join(augedText)
 
+
+def back_translation(text, mid, times=3):
+    for _ in range(times):
+        lang = random.choice(mid)
+        mid.remove(lang)
+        midText = Translate.translate(text, lang)
+    
+    augedText = Translate.translate(midText, 'bo')
+
+    return augedText
+
     
 if __name__ == '__main__':
     text = 'བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།'
     segedText = Tokenizer.sentence_tokenize(text)
     outputModel = 'models/segedCorpus.model'
     model = W2v.load_word2vec_model(outputModel)
+    langList = ['en', 'zh', 'de', 'it', 'he', 'ko', 'ja', 'es', 'ru', 'fr']
 
     print(' '.join(segedText))
     print()
@@ -65,6 +78,7 @@ if __name__ == '__main__':
         augedText.append(random_insert(model, segedText))
         augedText.append(random_delete(segedText))
         augedText.append(random_swap(segedText))
+        augedText.append(back_translation(text, langList, times=2))
     
     random.shuffle(augedText)
     print('\n'.join(augedText))
