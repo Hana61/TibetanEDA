@@ -1,6 +1,7 @@
 import Tokenizer
 import dataProcesser
 import W2v
+import eda
 
 
 parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
@@ -23,18 +24,16 @@ def pre_process():
 
 
 def main():
+    text = 'བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།'
+    outputModel = 'models/segedCorpus.model'
     model = W2v.load_word2vec_model(outputModel)
-    word = 'བུད་མེད་'
-    print(word)
-    similar_words = W2v.calculate_most_similar(model, word)        
-    for term in similar_words:
-        print(term[0], term[1])
-    
-    print(Tokenizer.sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"))
+
+    print(text, '\n')
+    print('\n'.join(eda.EDA(text, model, 15, 0.5, 0.5, 0.5, 0.5)))
     
     pass
 
 
-if __name__ == '__name__':
+if __name__ == '__main__':
     # pre_process()
     main()
