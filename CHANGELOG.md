@@ -82,7 +82,7 @@
 * 通过汉语编写小型文本分类任务数据集，并进行测试
 * 编写文档
 
-## [v0.5.1](https://github.com/Hana61/TibetanEDA/releases/tag/v0.5.1) - 2023-12-11
+## [v0.5.1](https://github.com/Hana61/TibetanEDA/releases/tag/v0.5.0) - 2023-12-11
 
 ### Added
 
