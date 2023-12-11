@@ -103,7 +103,7 @@
 
 ### Added
 
-* 完成EDA功能
+* 完成TibetanEDA功能
 
 ### Todo
 
