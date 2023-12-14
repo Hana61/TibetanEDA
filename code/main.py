@@ -2,6 +2,8 @@ import Tokenizer
 import dataProcesser
 import W2v
 import eda
+import io
+from tqdm import tqdm
 
 
 parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
@@ -24,12 +26,22 @@ def pre_process():
 
 
 def main():
-    text = 'བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།'
+    # text = 'བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།'
     outputModel = 'models/segedCorpus.model'
     model = W2v.load_word2vec_model(outputModel)
+    trainset_path = 'corpus/sst2_train_187_zh_bo.txt'
 
-    print(text, '\n')
-    print('\n'.join(eda.EDA(text, model, 15, 0.5, 0.5, 0.5, 0.5)))
+    with io.open(trainset_path.rstrip('.txt') + '_augmented.txt', 'w+', encoding='utf-8') as f:
+        for line in tqdm(open(trainset_path, encoding='utf-8')):
+            augedText = []
+            label, text = line.rstrip('\n').split('\t')
+            augedText = eda.EDA(text, model, 5, 0.1, 0.1, 0.1, 0.1)
+            for i in range(len(augedText)):
+                augedText[i] = label + '\t' + augedText[i]
+            augedText.append(line.rstrip('\n'))
+
+            f.write('\n'.join(augedText))
+            f.write('\n')
     
     pass
 

@@ -3,6 +3,7 @@
 '''
 import os
 import io
+import Translate
 
 
 def combine_subdir_text(save_path, parent_folder_paths):
@@ -49,10 +50,23 @@ def combine_dir_text(dir_path, combined_file_name):
     pass
 
 
+def trainset_translate(trainset_path):
+    translatedTexts = []
+    for line in open(trainset_path, encoding='utf-8'):
+        label, text = line.rstrip('\n').split('\t')
+        translatedText = Translate.translate(text, 'bo')
+        translatedTexts.append(label + '\t' + translatedText)
+
+    with io.open(trainset_path.rstrip('.txt') + '_bo.txt', 'w', encoding='utf-8') as f:
+            f.write('\n'.join(translatedTexts))
+    pass
+
 if __name__ == '__main__':
-    # 设置你的父文件夹路径(此处运行时工作路径在项目文件夹，而不在代码所在目录)
-    parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
-    savePath = 'corpus/'
-    combinedFileName = 'corpus.txt'
-    combine_subdir_text(savePath, parentFolderPaths)
-    combine_dir_text(savePath, combinedFileName)
+    # # 设置你的父文件夹路径(此处运行时工作路径在项目文件夹，而不在代码所在目录)
+    # parentFolderPaths = ['corpus/classical/', 'corpus/modern/']
+    # savePath = 'corpus/'
+    # combinedFileName = 'corpus.txt'
+    # combine_subdir_text(savePath, parentFolderPaths)
+    # combine_dir_text(savePath, combinedFileName)
+
+    trainset_translate('corpus/sst2_train_500_zh.txt')

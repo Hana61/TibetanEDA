@@ -66,7 +66,7 @@ def back_translation(text, mid, times=3):
 
 def EDA(text, model, sen_n, SR_p=0.1, RI_p=0.1, RD_p=0.1, RS_p=0.1, BT_n=3):
     segedText = Tokenizer.sentence_tokenize(text)
-    langList = ['en', 'zh', 'de', 'it', 'he', 'ko', 'ja', 'es', 'ru', 'fr']
+    langList = ['en', 'zh', 'de', 'it', 'he', 'ja', 'es', 'ru', 'fr']
 
     augedText = []
 
