@@ -59,12 +59,12 @@ def back_translation(text, mid, times=3):
         langList.remove(lang)
         midText = Translate.translate(text, lang)
     
-    augedText = Translate.translate(midText, 'bo')
+    augedText = Tokenizer.sentence_tokenize(Translate.translate(midText, 'bo'))
 
     return augedText
 
 
-def EDA(text, model, sen_n, SR_p=0.1, RI_p=0.1, RD_p=0.1, RS_p=0.1, BT_n=3):
+def EDA(text, model, sen_n, SR_p=0.1, RI_p=0.1, RD_p=0.1, RS_p=0.1, BT_n=1):
     segedText = Tokenizer.sentence_tokenize(text)
     langList = ['en', 'zh', 'de', 'it', 'he', 'ja', 'es', 'ru', 'fr']
 
@@ -93,7 +93,7 @@ def EDA(text, model, sen_n, SR_p=0.1, RI_p=0.1, RD_p=0.1, RS_p=0.1, BT_n=3):
         augedText.append(' '.join(midText))
 
         midText = back_translation(text, langList, BT_n)
-        augedText.append(midText)
+        augedText.append(' '.join(midText))
 
     random.shuffle(augedText)
 

@@ -42,8 +42,8 @@ def text_tokenize(corpus_path, output_path, output_file_name, dialect_name='gene
 
 
 if __name__ == "__main__":
-    outputPath = 'corpus/'
-    outputFileName = 'segedCorpus.txt'
-    corpusPath = "corpus/corpus.txt"
-    text_tokenize(corpusPath, outputPath, outputFileName, dialect_name='general')
-    # print(sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།"))
+    # outputPath = 'corpus/'
+    # outputFileName = 'segedCorpus.txt'
+    # corpusPath = "corpus/corpus.txt"
+    # text_tokenize(corpusPath, outputPath, outputFileName, dialect_name='general')
+    print(' '.join(sentence_tokenize("བཀྲ་ཤིས་བདེ་ལེགས་ཞུས་རྒྱུ་ཡིན་ སེམས་པ་སྐྱིད་པོ་འདུག།")))
